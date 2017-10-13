@@ -11,12 +11,20 @@ class NewTicketControl extends React.Component {
   handleDisplayingNewTicketForm(event) {
     console.log("New ticket button was clicked!");
     this.setState({formVisibleOnPage: true});
-    console.log("formVisible set to: " + this.state.formVisibleOnPage);
+    console.log("formVisibleOnPage set to: " + this.state.formVisibleOnPage);
   }
 
   render() {
+    let formAreaContent = null;
+    if (this.state.formVisibleOnPage) {
+      formAreaContent = <h1>Form will eventually go here.</h1>
+    } else {
+      formAreaContent =
+      <button onClick={this.handleDisplayingNewTicketForm.bind(this)}>Request Help</button>;
+    }
+
     return (
-      <button onClick={this.handleDisplayingNewTicketForm}>Request Help</button>
+      <div>{formAreaContent}</div>
     );
   }
 
